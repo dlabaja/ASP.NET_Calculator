@@ -3,7 +3,7 @@ let output = null;
 const symbols = "+-*/"
 let ans = 0
 
-function loadDoc(){
+function loadDoc() {
     input = document.getElementById("input")
     output = document.getElementById("output")
     output.value = ""
@@ -14,11 +14,11 @@ function writeToInput(val) {
     input.value += val
 }
 
-function writeConstant(constant){
+function writeConstant(constant) {
     if (symbols.includes(getLastChar()) || getLastChar() === null) writeToInput(constant);
 }
 
-function writeSymbol(symbol){
+function writeSymbol(symbol) {
     if (symbols.includes(getLastChar()) || (getLastChar() === null && symbol !== '-')) return
     writeToInput(symbol);
 }
@@ -27,12 +27,12 @@ function getLastChar() {
     if (input.value.length < 1) return null
     return input.value[input.value.length - 1]
 }
-    
+
 function sendToServer() {
     fetch('https://localhost:44381/home/calculate?val=' + formatInput())
         .then(response => response.text())
         .then(data => {
-            if (isNaN(data)){
+            if (isNaN(data)) { // math error
                 output.value = data
                 return
             }
@@ -42,16 +42,16 @@ function sendToServer() {
         .catch(error => console.log(error));
 }
 
-function formatInput(){
+function formatInput() {
     let _input = input.value.replace("Ans", ans)
     return encodeURIComponent(_input)
 }
 
-function delete_char(){
+function delete_char() {
     if (input.value.length < 1) return
     input.value = input.value.slice(0, -1);
 }
 
-function clear_input(){
+function clear_input() {
     input.value = ""
 }
