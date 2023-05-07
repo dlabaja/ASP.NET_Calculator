@@ -1,27 +1,26 @@
 ﻿let output = null;
-const symbols = "+-"
+const symbols = "+-*/"
+let resultInOutput = false
+let ans = 0
 
 function loadDoc(){
     output = document.getElementById("output")
+    clear_output()
 }
 
-function writeToTextBox(val) {
-    const symbols = "+-"
-    if (output.value === null) {
-        output.value += val
-        return
-    }
-    if (symbols.includes(output.value[output.value.length - 1]) && symbols.includes(val)) return //check for duplicate symbols
+function writeToOutput(val) {
+    if (!isNaN(val) && resultInOutput === true) clear_output()
     output.value += val
+    resultInOutput = false
 }
 
-function writeZero(){
-    if (symbols.includes(getLastChar()) || getLastChar() === null) return
-    writeToTextBox(0);
+function writeConstant(constant){
+    if (symbols.includes(getLastChar()) || getLastChar() === null || resultInOutput === true) writeToOutput(constant);
 }
 
-function writeSymbol(){
-    
+function writeSymbol(symbol){
+    if (symbols.includes(getLastChar()) || (getLastChar() === null && symbol !== '-')) return
+    writeToOutput(symbol);
 }
 
 function getLastChar() {
@@ -30,13 +29,21 @@ function getLastChar() {
 }
     
 function sendToServer() {
-    fetch('https://localhost:44381/home/calculate?val=' + encodeURIComponent(output.value))
+    fetch('https://localhost:44381/home/calculate?val=' + formatOutput())
         .then(response => response.text())
         .then(data => {
-            console.log(data)
             output.value = data
+            resultInOutput = true
+            ans = data
         })
         .catch(error => console.log(error));
+}
+
+function formatOutput(){
+    let _output = output.value
+    _output = _output.replace("Ans", ans)
+    console.log(_output)
+    return encodeURIComponent(_output)
 }
 
 function delete_char(){
@@ -45,5 +52,5 @@ function delete_char(){
 }
 
 function clear_output(){
-    output = ""
+    output.value = ""
 }
