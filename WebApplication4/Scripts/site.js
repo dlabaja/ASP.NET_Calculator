@@ -6,22 +6,21 @@ let ans = 0
 function loadDoc(){
     input = document.getElementById("input")
     output = document.getElementById("output")
-    clear_output()
+    output.value = ""
+    clear_input()
 }
 
-function writeToOutput(val) {
-    if (!isNaN(val) && resultInOutput === true) clear_output()
+function writeToInput(val) {
     input.value += val
-    resultInOutput = false
 }
 
 function writeConstant(constant){
-    if (symbols.includes(getLastChar()) || getLastChar() === null || resultInOutput === true) writeToOutput(constant);
+    if (symbols.includes(getLastChar()) || getLastChar() === null) writeToInput(constant);
 }
 
 function writeSymbol(symbol){
     if (symbols.includes(getLastChar()) || (getLastChar() === null && symbol !== '-')) return
-    writeToOutput(symbol);
+    writeToInput(symbol);
 }
 
 function getLastChar() {
@@ -30,20 +29,22 @@ function getLastChar() {
 }
     
 function sendToServer() {
-    fetch('https://localhost:44381/home/calculate?val=' + formatOutput())
+    fetch('https://localhost:44381/home/calculate?val=' + formatInput())
         .then(response => response.text())
         .then(data => {
-            
-            input.value = parseFloat(data).toFixed(6)
-            resultInOutput = true
+            if (isNaN(data)){
+                output.value = data
+                return
+            }
+            output.value = parseFloat(parseFloat(data).toFixed(6))
             ans = data
         })
         .catch(error => console.log(error));
 }
 
-function formatOutput(){
-    let _output = input.value.replace("Ans", ans)
-    return encodeURIComponent(_output)
+function formatInput(){
+    let _input = input.value.replace("Ans", ans)
+    return encodeURIComponent(_input)
 }
 
 function delete_char(){
@@ -51,6 +52,6 @@ function delete_char(){
     input.value = input.value.slice(0, -1);
 }
 
-function clear_output(){
+function clear_input(){
     input.value = ""
 }
