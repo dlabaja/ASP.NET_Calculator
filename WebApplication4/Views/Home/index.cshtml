@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Calculator</h1>
+    <input type="text" id="output" readonly>
+    <button onclick="writeToTextBox(1)">1</button>
+    <button onclick="writeToTextBox(2)">2</button>
+    <button onclick="writeToTextBox(3)">3</button>
+    <button onclick="writeToTextBox(4)">4</button>
+    <button onclick="writeToTextBox(5)">5</button>
+    <button onclick="writeToTextBox(6)">6</button>
+    <button onclick="writeToTextBox(7)">7</button>
+    <button onclick="writeToTextBox(8)">8</button>
+    <button onclick="writeToTextBox(9)">9</button>
+    <button onclick="writeZero()">0</button>
+    <button onclick="writeToTextBox('+')">+</button>
+    <button onclick="writeToTextBox('-')">-</button>
+    <button onclick="delete_char()">&#8592;</button>
+    <button onclick="clear_output()">C</button>
+    <button onclick="sendToServer()">=</button>
+</div>
+
