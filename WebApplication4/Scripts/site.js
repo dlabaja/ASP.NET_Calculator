@@ -1,16 +1,17 @@
-﻿let output = null;
+﻿let input = null;
+let output = null;
 const symbols = "+-*/"
-let resultInOutput = false
 let ans = 0
 
 function loadDoc(){
+    input = document.getElementById("input")
     output = document.getElementById("output")
     clear_output()
 }
 
 function writeToOutput(val) {
     if (!isNaN(val) && resultInOutput === true) clear_output()
-    output.value += val
+    input.value += val
     resultInOutput = false
 }
 
@@ -24,15 +25,16 @@ function writeSymbol(symbol){
 }
 
 function getLastChar() {
-    if (output.value.length < 1) return null
-    return output.value[output.value.length - 1]
+    if (input.value.length < 1) return null
+    return input.value[input.value.length - 1]
 }
     
 function sendToServer() {
     fetch('https://localhost:44381/home/calculate?val=' + formatOutput())
         .then(response => response.text())
         .then(data => {
-            output.value = data
+            
+            input.value = parseFloat(data).toFixed(6)
             resultInOutput = true
             ans = data
         })
@@ -40,17 +42,15 @@ function sendToServer() {
 }
 
 function formatOutput(){
-    let _output = output.value
-    _output = _output.replace("Ans", ans)
-    console.log(_output)
+    let _output = input.value.replace("Ans", ans)
     return encodeURIComponent(_output)
 }
 
 function delete_char(){
-    if (output.value.length < 1) return
-    output.value = output.value.slice(0, -1);
+    if (input.value.length < 1) return
+    input.value = input.value.slice(0, -1);
 }
 
 function clear_output(){
-    output.value = ""
+    input.value = ""
 }
