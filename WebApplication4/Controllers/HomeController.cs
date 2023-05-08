@@ -13,8 +13,8 @@ namespace WebApplication4.Controllers
             return View();
         }
 
-		[Route("[controller]")]
-		public ActionResult Calculate()
+        [Route("[controller]")]
+        public ActionResult Calculate()
         {
             return Content(new Calculator().Calculate(Request.QueryString["val"]));
         }
