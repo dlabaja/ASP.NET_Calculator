@@ -14,6 +14,12 @@ function writeToInput(val) {
     input.value += val
 }
 
+function writeDigit(digit){
+    console.log(getLastChar())
+    if (symbols.includes(getLastChar()) || getLastChar() === null || 
+        !isNaN(getLastChar()) || ".()".includes(getLastChar())) writeToInput(digit)
+}
+
 function writeConstant(constant) {
     if (symbols.includes(getLastChar()) || getLastChar() === null) writeToInput(constant);
 }

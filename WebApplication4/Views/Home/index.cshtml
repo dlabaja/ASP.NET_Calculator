@@ -7,16 +7,16 @@
     <input type="text" id="input" readonly>
     <input type="text" id="output" placeholder="Result" readonly>
     <button onclick="writeSymbol('.')">.</button>
-    <button onclick="writeToInput(1)">1</button>
-    <button onclick="writeToInput(2)">2</button>
-    <button onclick="writeToInput(3)">3</button>
-    <button onclick="writeToInput(4)">4</button>
-    <button onclick="writeToInput(5)">5</button>
-    <button onclick="writeToInput(6)">6</button>
-    <button onclick="writeToInput(7)">7</button>
-    <button onclick="writeToInput(8)">8</button>
-    <button onclick="writeToInput(9)">9</button>
-    <button onclick="writeToInput(0)">0</button>
+    <button onclick="writeDigit(1)">1</button>
+    <button onclick="writeDigit(2)">2</button>
+    <button onclick="writeDigit(3)">3</button>
+    <button onclick="writeDigit(4)">4</button>
+    <button onclick="writeDigit(5)">5</button>
+    <button onclick="writeDigit(6)">6</button>
+    <button onclick="writeDigit(7)">7</button>
+    <button onclick="writeDigit(8)">8</button>
+    <button onclick="writeDigit(9)">9</button>
+    <button onclick="writeDigit(0)">0</button>
     <button onclick="writeSymbol('+')">+</button>
     <button onclick="writeSymbol('-')">-</button>
     <button onclick="writeSymbol('*')">*</button>
@@ -27,6 +27,15 @@
     <button onclick="writeConstant('π')">π</button>
     <button onclick="writeConstant('e')">e</button>
     <button onclick="writeConstant('Ans')">Ans</button>
+    <button onclick="writeConstant('pow(')">&sup2;</button>
+    <button onclick="writeConstant('sqrt(')">√</button>
+    <button onclick="writeConstant('log(')">log</button>
+    <button onclick="writeConstant('sin(')">sin</button>
+    <button onclick="writeConstant('cos(')">cos</button>
+    <button onclick="writeConstant('tg(')">tg</button>
+    <button onclick="writeConstant('cotg(')">cotg</button>
+    <button onclick="writeConstant('abs(')">abs</button>
+    <button onclick="writeConstant('ln(')">ln</button>
     <button onclick="clear_input()">C</button>
     <button onclick="sendToServer()">=</button>
 </div>
