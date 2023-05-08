@@ -27,7 +27,7 @@ public class Calculator
 
         try
         {
-            while (_result.Any(c => "+-*/".Contains(c))) // iterates until there is only one number left
+            for (int _ = 0; _ < 10; _++) // iterates until there is only one number left, previously while loop
             {
                 for (int i = 0; i < _result.Length; i++) // calculating */
                 {
@@ -41,7 +41,7 @@ public class Calculator
                     CalculatePair(_result[i], i);
                 }
 
-                if (_result.Count(x => x == '-') == 1 && _result[0] == '-') break; // fix for negative results
+                if (int.TryParse(_result, out var _)) break; // fix for negative results
             }
         }
         catch
@@ -55,12 +55,21 @@ public class Calculator
     private void CalculatePair(char symbol, int index)
     {
         var _pair = FindPair(symbol, index);
+        ReplaceSignsAndBrackets();
         if (_pair == null) return;
         var pair = _pair.GetValueOrDefault();
+
         _result = _result.Replace( //replaces pair in string by calculated number 
             $"{pair.Num1.ToString(CultureInfo.InvariantCulture)}{pair.Symbol}{pair.Num2.ToString(CultureInfo.InvariantCulture)}",
-            _pairResult[symbol](pair.Num1, pair.Num2).ToString(CultureInfo.InvariantCulture));
+            $"+{_pairResult[symbol](pair.Num1, pair.Num2).ToString(CultureInfo.InvariantCulture)}");
+    }
+
+    private void ReplaceSignsAndBrackets()
+    {
         _result = Regex.Replace(_result, @"\(([-+]?\d+(\.\d+)?)\)", "$1"); //replace useless brackets
+        _result = Regex.Replace(_result, @"(-?\d+)([*/])-(-?\d+)", //replace *-
+            match =>
+                $"{int.Parse(match.Groups[1].Value) * -1}{match.Groups[2].Value}{int.Parse(match.Groups[3].Value)}");
         _result = Regex.Replace(_result, @"([+-])\s*([+-])", m => //replace double signs
         {
             if (m.Groups[1].Value == "+")
@@ -74,9 +83,12 @@ public class Calculator
 
     private NumberPair? FindPair(char symbol, int index)
     {
-        if (index == 0 || "()".Contains(_result[index - 1]) || "()".Contains(_result[index + 1])) return null; // returns if one part of pair is missing
+        if (index == 0 || "()".Contains(_result[index - 1]) || "()".Contains(_result[index + 1]))
+            return null; // returns if one part of pair is missing
         var pair = new NumberPair(FindNum1(index), FindNum2(index), symbol);
-        if (("*/".Contains(_result.ElementAtOrDefault(index + pair.Num2.ToString().Length + 1)) || // checks for */ operations, so that these numbers cannot be coupled with +-
+        if (("*/".Contains(
+                 _result.ElementAtOrDefault(index + pair.Num2.ToString().Length +
+                                            1)) || // checks for */ operations, so that these numbers cannot be coupled with +-
              "*/".Contains(_result.ElementAtOrDefault(index - pair.Num1.ToString().Length - 1))) &&
             "-+".Contains(symbol))
             return null;
@@ -101,7 +113,8 @@ public class Calculator
         // finding num1 until bracket/symbol is met, checking if it's negative
         for (int i = index - 1; i >= 0; i--)
         {
-            if (_result[i] == '-') return double.Parse(_result.Substring(i, index - i), CultureInfo.InvariantCulture); // negative number
+            if (_result[i] == '-')
+                return double.Parse(_result.Substring(i, index - i), CultureInfo.InvariantCulture); // negative number
             if (!Blacklist.Contains(_result[i])) continue;
             return double.Parse(_result.Substring(i + 1, index - (i + 1)), CultureInfo.InvariantCulture);
         }
