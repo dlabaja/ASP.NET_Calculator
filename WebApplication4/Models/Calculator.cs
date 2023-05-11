@@ -66,14 +66,18 @@ public class Calculator
         _result = query;
         _result = _result.Replace("e", Math.E.ToString(CultureInfo.InvariantCulture));
         _result = _result.Replace("π", Math.PI.ToString(CultureInfo.InvariantCulture));
+		_result = _result = Regex.Replace(_result, @"(([+-]?\d*\.?\d+)%)", 
+            m => $"{double.Parse(m.Groups[2].Value, CultureInfo.InvariantCulture) / 100}"); //replace %
 
-        for (int _ = 0; _ < 10; _++)
+		for (int _ = 0; _ < 10; _++)
         {
             Funcs();
             ReplaceSignsAndBrackets();
             MulDiv();
             AddSub();
         }
+
+
 
         return _mathError ? "Math ERROR" : _result;
     }
