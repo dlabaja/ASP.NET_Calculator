@@ -37,16 +37,7 @@ function getLastChar() {
 function sendToServer() {
     fetch('https://localhost:44381/home/calculate?val=' + formatInput())
         .then(response => response.text())
-        .then(data => {
-            if (data === "") {
-                output.value = ""
-                return
-            }
-            else if (isNaN(data)) { // math error
-                output.value = "Math ERROR"
-                return
-            }
-            
+        .then(data => {         
             output.value = data
             ans = data
         })

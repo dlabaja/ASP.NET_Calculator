@@ -234,3 +234,5 @@ C:\Users\brigadnik\Source\Repos\ASP.NET_Calculator\WebApplication4\obj\Debug\Web
 C:\Users\brigadnik\Source\Repos\ASP.NET_Calculator\WebApplication4\obj\Debug\WebApplication4.csproj.CopyComplete
 C:\Users\brigadnik\Source\Repos\ASP.NET_Calculator\WebApplication4\obj\Debug\WebApplication4.dll
 C:\Users\brigadnik\Source\Repos\ASP.NET_Calculator\WebApplication4\obj\Debug\WebApplication4.pdb
+C:\Users\brigadnik\source\repos\ASP.NET_Calculator\WebApplication4\bin\PostfixCalculator.dll
+C:\Users\brigadnik\source\repos\ASP.NET_Calculator\WebApplication4\bin\PostfixCalculator.pdb
