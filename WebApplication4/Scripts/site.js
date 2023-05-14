@@ -1,6 +1,6 @@
 ﻿let input = null;
 let output = null;
-const symbols = "+-*/"
+const symbols = "+-*/%"
 let ans = 0
 
 function loadDoc() {
