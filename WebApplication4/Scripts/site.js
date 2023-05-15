@@ -1,6 +1,7 @@
 ﻿let input = null;
 let output = null;
 const symbols = "+-*/%"
+const constants = ["π", "e", "Ans"]
 let ans = 0
 
 function loadDoc() {
@@ -14,19 +15,16 @@ function writeToInput(val) {
     input.value += val
 }
 
-function writeDigit(digit){
-    console.log(getLastChar())
-    if (symbols.includes(getLastChar()) || getLastChar() === null || 
-        !isNaN(getLastChar()) || ".()".includes(getLastChar())) writeToInput(digit)
+function writeFuncConst(constant) {
+    if (symbols.includes(getLastChar()) || getLastChar() === null || getLastChar() === '(') writeToInput(constant);
 }
 
-function writeConstant(constant) {
-    if (symbols.includes(getLastChar()) || getLastChar() === null) writeToInput(constant);
+function writeDecimalPoint() {
+    if (!isNaN(getLastChar())) writeToInput('.');
 }
 
 function writeSymbol(symbol) {
-    if (symbols.includes(getLastChar()) || (getLastChar() === null && symbol !== '-')) return
-    writeToInput(symbol);
+    if (!symbols.includes(getLastChar())) writeToInput(symbol);
 }
 
 function getLastChar() {
@@ -38,15 +36,6 @@ function sendToServer() {
     fetch('https://localhost:44381/home/calculate?val=' + formatInput())
         .then(response => response.text())
         .then(data => {
-            if (data === "") {
-                output.value = ""
-                return
-            }
-            else if (isNaN(data)) { // math error
-                output.value = "Math ERROR"
-                return
-            }
-            
             output.value = data
             ans = data
         })
@@ -54,7 +43,7 @@ function sendToServer() {
 }
 
 function formatInput() {
-    let _input = input.value.replace("Ans", ans)
+    let _input = input.value.replaceAll("Ans", ans)
     return encodeURIComponent(_input)
 }
 
