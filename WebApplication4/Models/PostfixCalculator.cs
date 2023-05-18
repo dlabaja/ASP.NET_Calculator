@@ -10,7 +10,6 @@ namespace PostfixCalculator
 	{
 		private readonly Stack<double> _buffer = new Stack<double>();
 		private Dictionary<string, Func<double>> _operations;
-		private string _exceptionMessage = "Invalid Syntax";
 
 		private void InitDict() => _operations = new Dictionary<string, Func<double>>
 		{
@@ -29,7 +28,7 @@ namespace PostfixCalculator
 				{
 					var num2 = _buffer.Pop();
 					var num1 = _buffer.Pop();
-					if (num2 == 0) ThrowException("Cannot divide by zero");
+					if (num2 == 0) throw new Exception("Cannot divide by zero");
 					return num1 / num2;
 				}
 			},
@@ -38,6 +37,7 @@ namespace PostfixCalculator
 				{
 					var num2 = _buffer.Pop();
 					var num1 = _buffer.Pop();
+					if (num2 == 0) throw new Exception("Cannot modulo by zero");
 					return num1 % num2;
 				}
 			},
@@ -48,7 +48,7 @@ namespace PostfixCalculator
 				"cotg", () =>
 				{
 					var num = _buffer.Pop();
-					if (num == 0) ThrowException("Cotg() cannot be zero");
+					if (num == 0) throw new Exception("Cotg() cannot be zero");
 					return Math.Cos(num) / Math.Sin(num);
 				}
 			},
@@ -57,7 +57,7 @@ namespace PostfixCalculator
 				"sqrt", () =>
 				{
 					var num = _buffer.Pop();
-					if (num < 0) ThrowException("Sqrt() cannot be < 0");
+					if (num < 0) throw new Exception("Sqrt() cannot be < 0");
 					return Math.Sqrt(num);
 				}
 			},
@@ -65,7 +65,7 @@ namespace PostfixCalculator
 				"log", () =>
 				{
 					var num = _buffer.Pop();
-					if (num <= 0) ThrowException("Log() cannot be ≤ 0");
+					if (num <= 0) throw new Exception("Log() cannot be ≤ 0");
 					return Math.Log10(num);
 				}
 			},
@@ -73,7 +73,7 @@ namespace PostfixCalculator
 				"ln", () =>
 				{
 					var num = _buffer.Pop();
-					if (num <= 0) ThrowException("Ln() cannot be ≤ 0");
+					if (num <= 0) throw new Exception("Ln() cannot be ≤ 0");
 					return Math.Log(num);
 				}
 			},
@@ -82,30 +82,28 @@ namespace PostfixCalculator
 			{"e", () => Math.E}
 		};
 
-		public object CalculatePostfix(IEnumerable<dynamic> commands)
+		public double CalculatePostfix(IEnumerable<dynamic> commands)
 		{
-			try
-			{
-				InitDict();
-				foreach (var item in commands)
+			InitDict();
+			foreach (var item in commands)
+				try
+				{
 					_buffer.Push(_operations.ContainsKey(Convert.ToString(item))
 						? (double)_operations[Convert.ToString(item)]()
 						: (double)Convert.ToDouble(item));
+				}
+				catch (InvalidOperationException)
+				{
+					throw new Exception("Invalid syntax");
+				}
+				catch (FormatException)
+				{
+					throw new Exception("Invalid syntax");
+				}
 
-				if (_buffer.Count > 1) throw new Exception(); // more than one number in result
-			}
-			catch
-			{
-				return _exceptionMessage;
-			}
+				if (_buffer.Count > 1) throw new Exception("Invalid syntax"); // more than one number in result
 
 			return _buffer.Pop();
-		}
-
-		private void ThrowException(string msg) //custom exceptions
-		{
-			_exceptionMessage = msg;
-			throw new Exception();
 		}
 
 		public IEnumerable<dynamic> InfixToPostfix(StringBuilder infix)
