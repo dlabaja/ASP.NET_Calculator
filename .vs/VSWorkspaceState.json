@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\WebApplication4",
+    "\\WebApplication4\\Controllers",
+    "\\WebApplication4\\Models"
   ],
+  "SelectedNode": "\\WebApplication4.sln",
   "PreviewInSolutionExplorer": false
 }
