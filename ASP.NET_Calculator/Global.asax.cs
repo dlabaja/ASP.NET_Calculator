@@ -14,7 +14,6 @@ namespace ASP.NET_Calculator
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            Firebird.SetupConnection();
         }
     }
 }
