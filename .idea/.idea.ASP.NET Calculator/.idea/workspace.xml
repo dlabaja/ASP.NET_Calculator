@@ -8,20 +8,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="46f46785-bc7d-4975-9256-79300faa1e95" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ASP.NET_Calculator/DB/employee.fdb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ASP.NET_Calculator/DB/fbclient.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ASP.NET Calculator/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ASP.NET Calculator/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/ASP.NET_Calculator.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/ASP.NET_Calculator/ASP.NET_Calculator.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/App_Start/BundleConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ASP.NET_Calculator/App_Start/BundleConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/App_Start/FilterConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ASP.NET_Calculator/App_Start/FilterConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/App_Start/RouteConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ASP.NET_Calculator/App_Start/RouteConfig.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ASP.NET_Calculator/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/Global.asax" beforeDir="false" afterPath="$PROJECT_DIR$/ASP.NET_Calculator/Global.asax" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/Global.asax.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ASP.NET_Calculator/Global.asax.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/Models/Firebird.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ASP.NET_Calculator/Models/Firebird.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/Models/PostfixCalculator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ASP.NET_Calculator/Models/PostfixCalculator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/Properties/AssemblyInfo.cs" beforeDir="false" afterPath="$PROJECT_DIR$/ASP.NET_Calculator/Properties/AssemblyInfo.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/ASP.NET_Calculator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ASP.NET_Calculator/bin/ASP.NET_Calculator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/ASP.NET_Calculator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ASP.NET_Calculator/bin/ASP.NET_Calculator.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/fbclient.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/fbembed.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/ib_util.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/icudt52.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/icudt52l.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/icuin52.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/icuuc52.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/intl/fbintl.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/intl/fbintl.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/plugins.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/plugins/engine12.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/plugins/fbtrace.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/plugins/legacy_auth.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/plugins/legacy_usermanager.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/plugins/srp.dll" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/plugins/udr_engine.conf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/bin/plugins/udr_engine.dll" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/obj/Debug/ASP.NET_Calculator.csproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ASP.NET_Calculator/obj/Debug/ASP.NET_Calculator.csproj.AssemblyReference.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/obj/Debug/ASP.NET_Calculator.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/ASP.NET_Calculator/obj/Debug/ASP.NET_Calculator.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/obj/Debug/ASP.NET_Calculator.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ASP.NET_Calculator/obj/Debug/ASP.NET_Calculator.csproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/obj/Debug/ASP.NET_Calculator.dll" beforeDir="false" afterPath="$PROJECT_DIR$/ASP.NET_Calculator/obj/Debug/ASP.NET_Calculator.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ASP.NET_Calculator/obj/Debug/ASP.NET_Calculator.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/ASP.NET_Calculator/obj/Debug/ASP.NET_Calculator.pdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +47,12 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
@@ -72,6 +93,8 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -114,7 +137,9 @@
       <workItem from="1684574351493" duration="69000" />
       <workItem from="1684574435885" duration="535000" />
       <workItem from="1684574994794" duration="39000" />
-      <workItem from="1684575139300" duration="1283000" />
+      <workItem from="1684575139300" duration="1736000" />
+      <workItem from="1684861938517" duration="4224000" />
+      <workItem from="1684940775047" duration="2934000" />
     </task>
     <task id="LOCAL-00001" summary="project restructure">
       <created>1684574915848</created>
@@ -123,13 +148,31 @@
       <option name="project" value="LOCAL" />
       <updated>1684574915848</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="project restructure">
+      <created>1684576756600</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1684576756600</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="project restructure" />

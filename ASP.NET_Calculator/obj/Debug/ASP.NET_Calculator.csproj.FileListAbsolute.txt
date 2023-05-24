@@ -160,23 +160,6 @@ C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\obj\Debug\ASP.NET_Cal
 C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\obj\Debug\ASP.NET_Calculator.csproj.CopyComplete
 C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\obj\Debug\ASP.NET_Calculator.dll
 C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\obj\Debug\ASP.NET_Calculator.pdb
-C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\bin\fbclient.dll
-C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\bin\fbembed.dll
-C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\bin\ib_util.dll
-C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\bin\icudt52.dll
-C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\bin\icudt52l.dat
-C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\bin\icuin52.dll
-C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\bin\icuuc52.dll
-C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\bin\intl\fbintl.conf
-C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\bin\intl\fbintl.dll
-C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\bin\plugins.conf
-C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\bin\plugins\engine12.dll
-C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\bin\plugins\fbtrace.dll
-C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\bin\plugins\legacy_auth.dll
-C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\bin\plugins\legacy_usermanager.dll
-C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\bin\plugins\srp.dll
-C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\bin\plugins\udr_engine.conf
-C:\Users\uzivatel 1\Downloads\fb+aspnet\ASP.NET_Calculator\bin\plugins\udr_engine.dll
 C:\Users\dlabajaj\Downloads\ASP.NET_Calculator\ASP.NET_Calculator\bin\ASP.NET_Calculator.dll.config
 C:\Users\dlabajaj\Downloads\ASP.NET_Calculator\ASP.NET_Calculator\bin\ASP.NET_Calculator.dll
 C:\Users\dlabajaj\Downloads\ASP.NET_Calculator\ASP.NET_Calculator\bin\ASP.NET_Calculator.pdb
