@@ -9,6 +9,7 @@ function loadDoc() {
     output = document.getElementById("output")
     output.value = ""
     clear_input()
+    loadLastResults()
 }
 
 function writeToInput(val) {
@@ -33,11 +34,28 @@ function getLastChar() {
 }
 
 function sendToServer() {
-    fetch('https://localhost:44381/home/calculate?val=' + formatInput())
+    fetch(`${window.location.href}/calculate?val=${formatInput()}`)
         .then(response => response.text())
         .then(data => {
             output.value = data
             ans = data
+
+            loadLastResults()
+        })
+        .catch(error => console.log(error));
+}
+
+function loadLastResults() {
+    fetch(`${window.location.href}/lastresults`)
+        .then(response => response.text())
+        .then(json => {
+            let data = JSON.parse(json)
+
+            let doc = document.getElementById('results');
+            doc.innerHTML = ""
+            for (var i = 0; i < data.Results.length; i++) {
+                doc.innerHTML += `<div class="result">${data.Results[i].resultTime}: ${data.Results[i].result}</div>`;
+            }
         })
         .catch(error => console.log(error));
 }

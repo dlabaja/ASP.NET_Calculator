@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -11,11 +13,9 @@ namespace ASP.NET_Calculator.Controllers
 {
     public class HomeController : Controller
     {
-        private string uid;
-
         public async Task<ActionResult> Index()
         {
-            if (await EstablishSession() == null) return RedirectToAction("Index");
+            if (await GetUID() == null) return RedirectToAction("Index");
             return View();
         }
 
@@ -24,34 +24,28 @@ namespace ASP.NET_Calculator.Controllers
         {
             var result = new PostfixCalculator().CalculatePostfix(
                 new PostfixCalculator().InfixToPostfix(new StringBuilder(Request.QueryString["val"])));
-            uid = await EstablishSession();
-            await Firebird.InsertResult(uid, result);
-            var results = await Firebird.GetResults(uid);
-            var data = new { Result = result, Results = results };
-            return Json(data, JsonRequestBehavior.AllowGet);
+            await Firebird.InsertResult(await GetUID(), result);
+            return Content(result.ToString());
         }
 
-        private async Task<string> EstablishSession()
+        [Route("[controller]")]
+        public async Task<ActionResult> LastResults()
         {
-            string uid = HttpContext.Request.Cookies["UID"]?.Value;
+            var uid = await GetUID();
+            var results = await Firebird.GetResults(uid);
+            return Json(new { Results = results }, JsonRequestBehavior.AllowGet);
+        }
 
+        public async Task<string> GetUID()
+        {
+            var uid = HttpContext.Request.Cookies["UID"]?.Value;
             if (string.IsNullOrEmpty(uid))
             {
-                var cookie = new HttpCookie("UID", Convert.ToString(await GenerateUID()));
-                Response.Cookies.Add(cookie);
+                uid = Convert.ToString(await SessionManager.GenerateUID());
+                Response.Cookies.Add(new HttpCookie("UID", uid));
                 return null;
             }
 
-            return uid;
-        }
-
-        private async Task<int> GenerateUID()
-        {
-            var uid = new Random().Next(int.MaxValue);
-            while (await Firebird.GetValueCount("UID", uid.ToString()) != 0)
-            {
-                uid = new Random().Next(int.MaxValue);
-            }
             return uid;
         }
     }

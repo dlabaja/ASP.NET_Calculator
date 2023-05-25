@@ -9,7 +9,7 @@ namespace ASP.NET_Calculator.Models
 {
     public static class Firebird
     {
-        private static readonly string ConnectionString = $@"Server=localhost;Port=3050;Database{Directory.GetParent(Directory.GetCurrentDirectory())?.Parent?.FullName};User=dlabaja;Password=dlabaja;";
+        public static readonly string ConnectionString = $@"Server=localhost;Port=3050;Database=C:\Users\dlabajaj\Downloads\ASP.NET_Calculator\ASP.NET_Calculator\DB\results.fdb;User=SYSDBA;Password=masterkey;";
 
         public static async Task InsertResult(string uid, double result)
         {
@@ -48,14 +48,14 @@ namespace ASP.NET_Calculator.Models
             }
         }
 
-        public static async Task<Dictionary<double, string>> GetResults(string uid)
+        public static async Task<List<ResultObject>> GetResults(string uid)
         {
-            var results = new Dictionary<double, string>();
+            var results = new List<ResultObject>();
 
             using (var con = new FbConnection(ConnectionString))
             {
                 await con.OpenAsync();
-                const string query = @"SELECT FIRST 5 * FROM ""RESULTS"" WHERE ""UID"" = @Value";
+                const string query = @"SELECT FIRST 5 * FROM ""RESULTS"" WHERE ""UID"" = @Value ORDER BY ""INDEX"" DESC;";
                 using (var command = new FbCommand(query, con))
                 {
                     command.Parameters.AddWithValue("@Value", uid);
@@ -64,9 +64,7 @@ namespace ASP.NET_Calculator.Models
                     {
                         while (await reader.ReadAsync())
                         {
-                            results.Add(
-                                double.Parse(reader["Result"].ToString(), NumberStyles.Any,
-                                    CultureInfo.InvariantCulture), reader["ResultTime"].ToString());
+                            results.Add(new ResultObject(double.Parse(reader["Result"].ToString(), NumberStyles.Any, CultureInfo.InvariantCulture), reader["ResultTime"].ToString()));
                         }
                     }
                 }
@@ -75,6 +73,18 @@ namespace ASP.NET_Calculator.Models
             }
 
             return results;
+        }
+
+        public struct ResultObject
+        {
+            public double result;
+            public string resultTime;
+
+            public ResultObject(double result, string resultTime)
+            {
+                this.result = result;
+                this.resultTime = resultTime;
+            }
         }
     }
 }
