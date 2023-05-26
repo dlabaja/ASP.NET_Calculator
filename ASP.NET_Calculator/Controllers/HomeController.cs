@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -21,7 +22,7 @@ namespace ASP.NET_Calculator.Controllers
             var result = new PostfixCalculator().CalculatePostfix(
                 new PostfixCalculator().InfixToPostfix(new StringBuilder(Request.QueryString["val"])));
             await Firebird.InsertResult(await GetUID(), result);
-            return Content(result.ToString());
+            return Content(result.ToString(CultureInfo.InvariantCulture));
         }
 
         [Route("[controller]")]

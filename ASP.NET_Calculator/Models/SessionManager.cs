@@ -23,34 +23,34 @@ namespace ASP.NET_Calculator.Models
 
         private static byte[] key = Encoding.UTF8.GetBytes(Secrets.secretKey);
 
-        public static string EncryptCookie(string plaintext)
+        public static string EncryptCookie(string text)
         {
-            StringBuilder ciphertext = new StringBuilder();
+            byte[] textBytes = Encoding.UTF8.GetBytes(text);
+            byte[] keyBytes = key;
 
-            for (int i = 0; i < plaintext.Length; i++)
+            byte[] encryptedBytes = new byte[textBytes.Length];
+
+            for (int i = 0; i < textBytes.Length; i++)
             {
-                int plaintextChar = plaintext[i];
-                int keyChar = key[i % key.Length];
-                int encryptedChar = plaintextChar ^ keyChar;
-                ciphertext.Append((char)encryptedChar);
+                encryptedBytes[i] = (byte)(textBytes[i] ^ keyBytes[i % keyBytes.Length]);
             }
 
-            return ciphertext.ToString();
+            return Convert.ToBase64String(encryptedBytes);
         }
 
-        public static string DecryptCookie(string ciphertext)
+        public static string DecryptCookie(string encryptedText)
         {
-            StringBuilder plaintext = new StringBuilder();
+            byte[] encryptedBytes = Convert.FromBase64String(encryptedText);
+            byte[] keyBytes = key;
 
-            for (int i = 0; i < ciphertext.Length; i++)
+            byte[] decryptedBytes = new byte[encryptedBytes.Length];
+
+            for (int i = 0; i < encryptedBytes.Length; i++)
             {
-                int encryptedChar = ciphertext[i];
-                int keyChar = key[i % key.Length];
-                int plaintextChar = encryptedChar ^ keyChar;
-                plaintext.Append((char)plaintextChar);
+                decryptedBytes[i] = (byte)(encryptedBytes[i] ^ keyBytes[i % keyBytes.Length]);
             }
 
-            return plaintext.ToString();
+            return Encoding.UTF8.GetString(decryptedBytes);
         }
     }
 }

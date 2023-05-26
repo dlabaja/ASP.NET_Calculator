@@ -64,7 +64,7 @@ namespace ASP.NET_Calculator.Models
                     {
                         while (await reader.ReadAsync())
                         {
-                            results.Add(new ResultObject(double.Parse(reader["Result"].ToString(), NumberStyles.Any, CultureInfo.InvariantCulture), reader["ResultTime"].ToString()));
+                            results.Add(new ResultObject(double.Parse(reader["Result"].ToString()), reader["ResultTime"].ToString()));
                         }
                     }
                 }
