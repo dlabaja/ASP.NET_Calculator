@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -42,11 +38,11 @@ namespace ASP.NET_Calculator.Controllers
             if (string.IsNullOrEmpty(uid))
             {
                 uid = Convert.ToString(await SessionManager.GenerateUID());
-                Response.Cookies.Add(new HttpCookie("UID", uid));
+                Response.Cookies.Set(new HttpCookie("UID", SessionManager.EncryptCookie(uid)));
                 return null;
             }
 
-            return uid;
+            return SessionManager.DecryptCookie(uid);
         }
     }
 }
