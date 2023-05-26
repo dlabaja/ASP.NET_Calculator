@@ -54,3 +54,14 @@ input {
     font-size: 32px;
 }
 
+table {
+    margin: auto;
+}
+
+td {
+    border: 10px solid white;
+}
+
+#last_results {
+    margin-top: 30px;
+}

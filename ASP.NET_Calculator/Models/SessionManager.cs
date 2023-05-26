@@ -25,10 +25,10 @@ namespace ASP.NET_Calculator.Models
 
         public static string EncryptCookie(string text)
         {
-            byte[] textBytes = Encoding.UTF8.GetBytes(text);
-            byte[] keyBytes = key;
+            var textBytes = Encoding.UTF8.GetBytes(text);
+            var keyBytes = key;
 
-            byte[] encryptedBytes = new byte[textBytes.Length];
+            var encryptedBytes = new byte[textBytes.Length];
 
             for (int i = 0; i < textBytes.Length; i++)
             {
@@ -40,10 +40,10 @@ namespace ASP.NET_Calculator.Models
 
         public static string DecryptCookie(string encryptedText)
         {
-            byte[] encryptedBytes = Convert.FromBase64String(encryptedText);
-            byte[] keyBytes = key;
+            var encryptedBytes = Convert.FromBase64String(encryptedText);
+            var keyBytes = key;
 
-            byte[] decryptedBytes = new byte[encryptedBytes.Length];
+            var decryptedBytes = new byte[encryptedBytes.Length];
 
             for (int i = 0; i < encryptedBytes.Length; i++)
             {

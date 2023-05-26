@@ -19,9 +19,10 @@ namespace ASP.NET_Calculator.Controllers
         [Route("[controller]")]
         public async Task<ActionResult> Calculate()
         {
+            var expression = Request.QueryString["val"];
             var result = new PostfixCalculator().CalculatePostfix(
-                new PostfixCalculator().InfixToPostfix(new StringBuilder(Request.QueryString["val"])));
-            await Firebird.InsertResult(await GetUID(), result);
+                new PostfixCalculator().InfixToPostfix(new StringBuilder(expression)));
+            await Firebird.InsertResult(await GetUID(), expression, result);
             return Content(result.ToString(CultureInfo.InvariantCulture));
         }
 

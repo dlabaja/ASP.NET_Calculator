@@ -51,10 +51,14 @@ function loadLastResults() {
         .then(json => {
             let data = JSON.parse(json)
 
-            let doc = document.getElementById('results');
+            let doc = document.getElementById('table');
             doc.innerHTML = ""
             for (var i = 0; i < data.Results.length; i++) {
-                doc.innerHTML += `<div class="result">${data.Results[i].resultTime}: ${data.Results[i].result}</div>`;
+                doc.innerHTML += `<tr>
+                    <td>${data.Results[i].expression}</td>
+                    <td>${data.Results[i].result}</td>
+                    <td>${data.Results[i].dateTime}</td>
+                </tr>`;
             }
         })
         .catch(error => console.log(error));

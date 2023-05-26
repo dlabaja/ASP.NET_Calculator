@@ -11,18 +11,19 @@ namespace ASP.NET_Calculator.Models
     {
         public static readonly string ConnectionString = $@"Server=localhost;Port=3050;Database=C:\Users\dlabajaj\Downloads\ASP.NET_Calculator\ASP.NET_Calculator\DB\results.fdb;User=SYSDBA;Password=masterkey;";
 
-        public static async Task InsertResult(string uid, double result)
+        public static async Task InsertResult(string uid, string expression, double result)
         {
             using (var con = new FbConnection(ConnectionString))
             {
                 await con.OpenAsync();
                 const string query =
-                    @"INSERT INTO ""RESULTS"" (""UID"" ,""Result"", ""ResultTime"") VALUES (@Value1, @Value2, @Value3);";
+                    @"INSERT INTO ""RESULTS"" (""UID"", ""Expression"", ""Result"", ""DateTime"") VALUES (@Value1, @Value2, @Value3, @Value4);";
                 using (var command = new FbCommand(query, con))
                 {
                     command.Parameters.AddWithValue("@Value1", uid);
-                    command.Parameters.AddWithValue("@Value2", result);
-                    command.Parameters.AddWithValue("@Value3", DateTime.Now.ToString("dd.MM.yyyy HH:mm"));
+                    command.Parameters.AddWithValue("@Value2", expression);
+                    command.Parameters.AddWithValue("@Value3", result);
+                    command.Parameters.AddWithValue("@Value4", DateTime.Now);
                     await command.ExecuteNonQueryAsync();
                 }
 
@@ -64,7 +65,7 @@ namespace ASP.NET_Calculator.Models
                     {
                         while (await reader.ReadAsync())
                         {
-                            results.Add(new ResultObject(double.Parse(reader["Result"].ToString()), reader["ResultTime"].ToString()));
+                            results.Add(new ResultObject(reader["Expression"].ToString(), reader.GetDouble(reader.GetOrdinal("Result")), reader["DateTime"].ToString()));
                         }
                     }
                 }
@@ -77,13 +78,15 @@ namespace ASP.NET_Calculator.Models
 
         public struct ResultObject
         {
+            public string expression;
             public double result;
-            public string resultTime;
+            public string dateTime;
 
-            public ResultObject(double result, string resultTime)
+            public ResultObject(string expression, double result, string dateTime)
             {
+                this.expression = expression;
                 this.result = result;
-                this.resultTime = resultTime;
+                this.dateTime = dateTime;
             }
         }
     }
